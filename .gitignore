@@ -1,0 +1,12 @@
+backend/.*
+backend/target
+backend/HELP.md
+backend/*.cmd
+backend/mvnw
+
+backend/src/test
+backend/src/main/resources/env.properties
+
+frontend/node_modules
+frontend/HELP.md
+frontend/.gitignore
