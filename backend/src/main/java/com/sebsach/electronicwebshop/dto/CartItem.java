@@ -1,5 +1,4 @@
-package com.sebsach.electronicwebshop.model;
-
+package com.sebsach.electronicwebshop.dto;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,19 +7,19 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "t_order_item")
-public class OrderItem {
+@Table(name = "t_cart_item")
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "product_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
     private int quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
 }

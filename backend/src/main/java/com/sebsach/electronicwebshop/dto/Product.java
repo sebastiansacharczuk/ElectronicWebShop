@@ -1,4 +1,4 @@
-package com.sebsach.electronicwebshop.model;
+package com.sebsach.electronicwebshop.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
