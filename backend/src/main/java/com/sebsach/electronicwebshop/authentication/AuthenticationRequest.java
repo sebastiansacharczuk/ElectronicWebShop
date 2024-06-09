@@ -15,6 +15,7 @@ public class AuthenticationRequest {
 
     @NotEmpty(message = "Username is required")
     @NotNull(message = "Username is required")
+    @Size(min = 6, max = 30, message = "Username should be between 4 and 20 characters")
     private String username;
 
     @NotEmpty(message = "Password is required")

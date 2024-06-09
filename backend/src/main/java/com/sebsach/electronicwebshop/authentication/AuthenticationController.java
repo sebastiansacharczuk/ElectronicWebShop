@@ -1,5 +1,6 @@
 package com.sebsach.electronicwebshop.authentication;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class AuthenticationController {
 
     @PostMapping(value = "/register", produces = "application/json")
     public ResponseEntity<?> register(
-            @RequestBody RegistrationRequest request
+            @RequestBody @Valid RegistrationRequest request
     ){
         authService.register(request);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -26,9 +27,10 @@ public class AuthenticationController {
 
     @PostMapping(value = "/login", produces = "application/json")
     public ResponseEntity<AuthenticationResponse> login(
-            @RequestBody AuthenticationRequest request
+            @RequestBody @Valid AuthenticationRequest request
     ){
-        return new ResponseEntity<>(authService.authenticate(request), HttpStatus.OK);
+        return ResponseEntity.ok(authService.authenticate(request));
     }
+
 
 }

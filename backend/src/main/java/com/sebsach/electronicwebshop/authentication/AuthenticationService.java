@@ -41,7 +41,7 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        try{
+
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             request.getUsername(),
@@ -53,11 +53,7 @@ public class AuthenticationService {
             return AuthenticationResponse.builder()
                     .token(jwtToken)
                     .build();
-        }
-        catch (Exception e) {
-            return AuthenticationResponse.builder()
-                    .token("")
-                    .build();
-        }
+
+
     }
 }
