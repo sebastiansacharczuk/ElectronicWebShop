@@ -4,6 +4,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
+import { ProductControllerService } from './services/product-controller.service';
 import { AuthenticationControllerService } from './services/authentication-controller.service';
 
 /**
@@ -14,6 +15,7 @@ import { AuthenticationControllerService } from './services/authentication-contr
   exports: [],
   declarations: [],
   providers: [
+    ProductControllerService,
     AuthenticationControllerService,
     ApiConfiguration
   ],

@@ -1,0 +1,21 @@
+name;price;quantity;producer;description;category
+AirPods 1 Pro;119.99;80;APPLE;Developed in Silicon Valley by Steve Jobs;AUDIO
+iPhone 13;999.99;50;APPLE;Designed and developed in Cupertino, California;MOBILE PHONE
+MacBook Pro;1799.99;30;APPLE;High-performance notebook with advanced graphics and storage;LAPTOP
+Apple Watch;399.99;60;APPLE;Innovative wearable technology from Apple;SMART WATCH
+iPad Pro;799.99;40;APPLE;Powerful tablet with advanced features and capabilities;TABLET
+HP Spectre x360;1399.99;20;HP;Convertible laptop with powerful Intel processor;LAPTOP
+HP Envy;1099.99;30;HP;All-in-one desktop with high-resolution display;DESKTOP
+HP Pavilion;699.99;50;HP;Affordable laptop with reliable performance;LAPTOP
+HP Elite Dragonfly;1799.99;15;HP;Lightweight business laptop with advanced security features;LAPTOP
+HP ZBook;2299.99;10;HP;Mobile workstation for professionals;LAPTOP
+Samsung Galaxy S21;799.99;70;SAMSUNG;Flagship smartphone with pro-grade camera;MOBILE PHONE
+Samsung Galaxy Note20;999.99;60;SAMSUNG;Premium smartphone with advanced S Pen;MOBILE PHONE
+Samsung Galaxy Tab S7;649.99;40;SAMSUNG;High-performance tablet with AMOLED display;TABLET
+Samsung Galaxy Watch;299.99;80;SAMSUNG;Smartwatch with long-lasting battery life;SMART WATCH
+Samsung Galaxy Buds Pro;199.99;90;SAMSUNG;Wireless earbuds with intelligent active noise cancellation;AUDIO
+Sony PlayStation 5;499.99;20;SONY;Next-generation game console with ultra-high-speed SSD;GAMING CONSOLE
+Sony Bravia XR A90J;2999.99;10;SONY;4K OLED TV with cognitive processor XR;TELEVISION
+Sony Alpha a7 III;1999.99;15;SONY;Full-frame mirrorless camera with high-speed response;CAMERA
+Sony WH-1000XM4;349.99;70;SONY;Wireless noise-cancelling headphones;AUDIO
+Sony SRS-XB23;99.99;100;SONY;Portable Bluetooth speaker with EXTRA BASS;AUDIO

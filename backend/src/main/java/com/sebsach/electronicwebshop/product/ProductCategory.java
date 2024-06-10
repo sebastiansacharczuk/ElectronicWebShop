@@ -1,14 +1,16 @@
-package com.sebsach.electronicwebshop.dto;
+package com.sebsach.electronicwebshop.product;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "t_producer")
-public class Producer {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "t_product_category")
+public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

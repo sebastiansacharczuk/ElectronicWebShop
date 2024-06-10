@@ -31,14 +31,17 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ExceptionResponse> handleException() {
+    public ResponseEntity<ExceptionResponse> handleException(BadCredentialsException exp) {
+
         return ResponseEntity
                 .status(UNAUTHORIZED)
                 .body(
                         ExceptionResponse.builder()
                                 .businessErrorCode(BAD_CREDENTIALS.getCode())
                                 .businessErrorDescription(BAD_CREDENTIALS.getDescription())
-                                .error("Login and / or Password is incorrect")
+                                .error(
+                                        exp.getMessage().equals("Username already in use") ? exp.getMessage() : "Login and / or Password is incorrect"
+                                )
                                 .build()
                 );
     }

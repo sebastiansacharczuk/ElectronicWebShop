@@ -1,5 +1,6 @@
 package com.sebsach.electronicwebshop.dto;
 
+import com.sebsach.electronicwebshop.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

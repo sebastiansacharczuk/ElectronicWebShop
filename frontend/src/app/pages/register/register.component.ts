@@ -41,10 +41,19 @@ export class RegisterComponent {
           this.router.navigate(['login']);
         },
         error: (err) => {
-          this.errorMsg = err.error.validationErrors;
+          console.log(err);
+          if(err.status == 0){
+            this.errorMsg.push("CONNECTION_ERROR");
+          }
+          if (err.error.validationErrors) {
+            this.errorMsg = err.error.validationErrors;
+          } else {
+            this.errorMsg.push(err.error.error);
+          }
         }
       });
   }
+
 
   protected readonly input = input;
 }

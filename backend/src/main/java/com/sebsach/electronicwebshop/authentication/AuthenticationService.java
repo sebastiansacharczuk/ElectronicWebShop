@@ -6,6 +6,7 @@ import com.sebsach.electronicwebshop.repository.RoleRepository;
 import com.sebsach.electronicwebshop.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,20 +25,21 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-
-
-
     public void register(RegistrationRequest request){
         var userRole = roleRepository.findByName("USER")
-                // TODO( better exception handling )
                 .orElseThrow(() -> new IllegalStateException("Role USER was not initiated"));
-        User user = User.builder()
-                .username(request.getUsername())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .accountLocked(false)
-                .roles(Set.of(userRole))
-                .build();
-        userRepository.save(user);
+        if(userRepository.findByUsername(request.getUsername()).isEmpty()){
+            User user = User.builder()
+                    .username(request.getUsername())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .accountLocked(false)
+                    .roles(Set.of(userRole))
+                    .build();
+            userRepository.save(user);
+        }
+        else {
+            throw new BadCredentialsException("Username already in use");
+        }
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {

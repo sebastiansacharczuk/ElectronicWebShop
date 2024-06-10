@@ -1,4 +1,4 @@
-package com.sebsach.electronicwebshop.dto;
+package com.sebsach.electronicwebshop.product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,14 +12,15 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@RequiredArgsConstructor
+
+@Entity
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "t_product")
 public class Product {
     @Id
@@ -37,7 +38,13 @@ public class Product {
     @PositiveOrZero
     private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "producer_id", nullable = false)
     private Producer producer;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategory productCategory;
 }

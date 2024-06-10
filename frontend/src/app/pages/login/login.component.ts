@@ -34,7 +34,7 @@ export class LoginComponent {
     }).subscribe({
       next: (result) => {
         this.tokenService.token = result.token as string;
-        this.router.navigate(['products']);
+        this.router.navigate(['product']);
       },
       error: (err) => {
         console.log(err);
