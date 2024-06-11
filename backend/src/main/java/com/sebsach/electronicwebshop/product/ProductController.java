@@ -24,7 +24,7 @@ public class ProductController {
             @RequestParam(name = "size", defaultValue = "10", required = false) int size,
             Authentication connectedUser
     ) {
-        return ResponseEntity.ok(productService.findAllProducts(page, size, connectedUser));
+        return ResponseEntity.ok(productService.findAllProducts(page, size));
     }
 
     @PostMapping("/add")

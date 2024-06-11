@@ -1,5 +1,7 @@
 package com.sebsach.electronicwebshop.exception;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -88,5 +90,10 @@ public class GlobalExceptionHandler {
                                 .error(exp.getMessage())
                                 .build()
                 );
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("JWT token expired");
     }
 }

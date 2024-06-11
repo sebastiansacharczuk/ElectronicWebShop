@@ -5,6 +5,7 @@ import { AuthenticationControllerService } from '../../services/services';
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {TokenService} from "../../services/token/token.service";
+import {AuthService} from "../../services/authToken/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationControllerService,
-    private tokenService: TokenService
+    private tokenService: AuthService
   ) {
   }
 

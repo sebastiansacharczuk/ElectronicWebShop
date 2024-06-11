@@ -6,3 +6,4 @@ export { PageResponseProductResponse } from './models/page-response-product-resp
 export { ProductRequest } from './models/product-request';
 export { ProductResponse } from './models/product-response';
 export { RegistrationRequest } from './models/registration-request';
+export { SessionValidResponse } from './models/session-valid-response';

@@ -1,6 +1,5 @@
 package com.sebsach.electronicwebshop.repository;
 
-import com.sebsach.electronicwebshop.dto.User;
 import com.sebsach.electronicwebshop.product.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,5 +15,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product save(Product product);
 
     @Query("SELECT product FROM Product product")
-    Page<Product> findAllProducts(Pageable pageable, Long userId);
+    Page<Product> findAllProducts(Pageable pageable);
 }

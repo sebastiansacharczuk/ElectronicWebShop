@@ -5,7 +5,6 @@ import com.sebsach.electronicwebshop.repository.ProductCategoryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import com.sebsach.electronicwebshop.dto.User;
 import com.sebsach.electronicwebshop.repository.ProducerRepository;
 import com.sebsach.electronicwebshop.repository.ProductRepository;
 import jakarta.persistence.EntityManager;
@@ -47,10 +46,9 @@ public class ProductService {
     }
 
 
-    public PageResponse<ProductResponse> findAllProducts(int page, int size, Authentication connectedUser) {
-        User user = ((User) connectedUser.getPrincipal());
+    public PageResponse<ProductResponse> findAllProducts(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("name").ascending());
-        Page<Product> products = productRepository.findAllProducts(pageable, user.getId());
+        Page<Product> products = productRepository.findAllProducts(pageable);
         List<ProductResponse> booksResponse = products.stream()
                 .map(ProductMapper::toProductResponse)
                 .toList();
@@ -65,6 +63,24 @@ public class ProductService {
                 products.isLast()
         );
     }
+//    public PageResponse<ProductResponse> findAllProducts(int page, int size, Authentication connectedUser) {
+//        User user = ((User) connectedUser.getPrincipal());
+//        Pageable pageable = PageRequest.of(page, size, Sort.by("name").ascending());
+//        Page<Product> products = productRepository.findAllProducts(pageable, user.getId());
+//        List<ProductResponse> booksResponse = products.stream()
+//                .map(ProductMapper::toProductResponse)
+//                .toList();
+//
+//        return new PageResponse<ProductResponse>(
+//                booksResponse,
+//                products.getNumber(),
+//                products.getSize(),
+//                products.getTotalElements(),
+//                products.getTotalPages(),
+//                products.isFirst(),
+//                products.isLast()
+//        );
+//    }
 
 
 }

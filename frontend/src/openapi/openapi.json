@@ -41,6 +41,26 @@
         }
       }
     },
+    "/auth/sessionValid": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "operationId": "sessionValid",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionValidResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/register": {
       "post": {
         "tags": [
@@ -168,6 +188,14 @@
           },
           "producer": {
             "type": "string"
+          }
+        }
+      },
+      "SessionValidResponse": {
+        "type": "object",
+        "properties": {
+          "isValid": {
+            "type": "boolean"
           }
         }
       },
