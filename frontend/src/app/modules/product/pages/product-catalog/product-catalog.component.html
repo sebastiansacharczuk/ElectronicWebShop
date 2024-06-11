@@ -1,35 +1,70 @@
 <p class="text-center my-3">Product Catalog</p>
-<div class="container">
-  <div class="row">
+<div class="d-flex justify-content-start gap-2 flex-wrap">
     <!-- Loop through each product in the productResponse.content array -->
-    <div *ngFor="let product of productResponse.content" class="col-md-4 mb-4">
-      <!-- Bootstrap Card Component -->
-      <div class="card h-100">
-        <!-- Card Body -->
-        <div class="card-body">
-          <!-- Product Name as Card Title -->
-          <h5 class="card-title">{{ product.name }}</h5>
-          <!-- Product Description -->
-          <p class="card-text">{{ product.description }}</p>
-          <!-- Product Details -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <strong>Price:</strong> ${{ product.price }}
-            </li>
-            <li class="list-group-item">
-              <strong>Quantity:</strong> {{ product.quantity }}
-            </li>
-            <li class="list-group-item">
-              <strong>Producer:</strong> {{ product.producer }}
-            </li>
-          </ul>
-        </div>
-        <!-- Card Footer -->
-        <div class="card-footer text-muted text-center">
-          <!-- Placeholder for any additional footer content -->
-          <small>Available now!</small>
-        </div>
-      </div>
-    </div>
-  </div>
+    <app-product-card
+      *ngFor="let product of productResponse.content"
+      [product]="product"
+    >
+    </app-product-card>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a
+          (click)="goToFirstPage()"
+          [class.disabled]="page === 0"
+          aria-label="Previous"
+          class="page-link"
+          href="javascript:void(0)"
+        >
+          <i class="fa-solid fa-angles-left"></i>
+        </a>
+      </li>
+      <li class="page-item">
+        <a
+          (click)="goToPreviousPage()"
+          [class.disabled]="page === 0"
+          aria-label="Previous"
+          class="page-link"
+          href="javascript:void(0)"
+        >
+          <i class="fa-solid fa-angle-left"></i>
+        </a>
+      </li>
+      <li
+        *ngFor="let pageIndex of pages"
+        class="page-item"
+      >
+        <a
+          (click)="gotToPage(pageIndex)"
+          [class.active]="page === pageIndex"
+          class="page-link"
+          href="javascript:void(0)"
+        >{{ pageIndex + 1 }}</a>
+      </li>
+      <li class="page-item">
+        <a
+          (click)="goToNextPage()"
+          [class.disabled]="isLastPage"
+          aria-label="Next"
+          class="page-link"
+          href="javascript:void(0)"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </li>
+      <li class="page-item">
+        <a
+          (click)="goToLastPage()"
+          [class.disabled]="isLastPage"
+          aria-label="Next"
+          class="page-link"
+          href="javascript:void(0)"
+        >
+          <i class="fa-solid fa-angles-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>

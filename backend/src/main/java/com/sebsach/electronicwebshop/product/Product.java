@@ -38,6 +38,8 @@ public class Product {
     @PositiveOrZero
     private int quantity;
 
+    private String image;
+
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)

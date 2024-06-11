@@ -11,6 +11,7 @@ public class ProductResponse {
     private String name;
     private String description;
     private double price;
+    private String image;
     private int quantity;
     private String producer;
 }
