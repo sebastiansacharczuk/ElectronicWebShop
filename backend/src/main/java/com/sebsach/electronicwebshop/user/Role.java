@@ -1,4 +1,4 @@
-package com.sebsach.electronicwebshop.dto;
+package com.sebsach.electronicwebshop.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

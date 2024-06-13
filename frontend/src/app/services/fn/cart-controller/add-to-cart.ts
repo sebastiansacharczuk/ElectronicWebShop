@@ -6,14 +6,18 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { SessionValidResponse } from '../../models/session-valid-response';
+import { ProductResponse } from '../../models/product-response';
 
-export interface SessionValid$Params {
+export interface AddToCart$Params {
+  productId: number;
+  quantity: number;
 }
 
-export function sessionValid(http: HttpClient, rootUrl: string, params?: SessionValid$Params, context?: HttpContext): Observable<StrictHttpResponse<SessionValidResponse>> {
-  const rb = new RequestBuilder(rootUrl, sessionValid.PATH, 'post');
+export function addToCart(http: HttpClient, rootUrl: string, params: AddToCart$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<ProductResponse>>> {
+  const rb = new RequestBuilder(rootUrl, addToCart.PATH, 'post');
   if (params) {
+    rb.query('productId', params.productId, {});
+    rb.query('quantity', params.quantity, {});
   }
 
   return http.request(
@@ -21,9 +25,9 @@ export function sessionValid(http: HttpClient, rootUrl: string, params?: Session
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<SessionValidResponse>;
+      return r as StrictHttpResponse<Array<ProductResponse>>;
     })
   );
 }
 
-sessionValid.PATH = '/auth/sessionValid';
+addToCart.PATH = '/cart/add';

@@ -1,7 +1,10 @@
 import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 export const httpTokenInterceptor: HttpInterceptorFn = (request, next) => {
+  const router = inject(Router)
   console.log("httpTokenIntterceptor")
   if (request.url.includes('/login')) {
     return next(request);
@@ -19,7 +22,10 @@ export const httpTokenInterceptor: HttpInterceptorFn = (request, next) => {
     catchError(() => { 
       console.log("removing token")
       localStorage.removeItem("token")
-      location.reload()
+      if(router.url == "/product")
+        location.reload()
+      else
+        router.navigate(['product'])
       return next(request);
     })
   );

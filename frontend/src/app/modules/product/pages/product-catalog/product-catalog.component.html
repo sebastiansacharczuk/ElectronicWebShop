@@ -1,9 +1,9 @@
 <p class="text-center my-3">Product Catalog</p>
 <div class="d-flex justify-content-start gap-2 flex-wrap">
-    <!-- Loop through each product in the productResponse.content array -->
     <app-product-card
       *ngFor="let product of productResponse.content"
       [product]="product"
+      (addToCart)="addToCart($event)"
     >
     </app-product-card>
 </div>

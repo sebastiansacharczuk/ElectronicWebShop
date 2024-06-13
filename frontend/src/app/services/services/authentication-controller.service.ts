@@ -14,39 +14,11 @@ import { login } from '../fn/authentication-controller/login';
 import { Login$Params } from '../fn/authentication-controller/login';
 import { register } from '../fn/authentication-controller/register';
 import { Register$Params } from '../fn/authentication-controller/register';
-import { sessionValid } from '../fn/authentication-controller/session-valid';
-import { SessionValid$Params } from '../fn/authentication-controller/session-valid';
-import { SessionValidResponse } from '../models/session-valid-response';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationControllerService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
-  }
-
-  /** Path part for operation `sessionValid()` */
-  static readonly SessionValidPath = '/auth/sessionValid';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `sessionValid()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  sessionValid$Response(params?: SessionValid$Params, context?: HttpContext): Observable<StrictHttpResponse<SessionValidResponse>> {
-    return sessionValid(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `sessionValid$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  sessionValid(params?: SessionValid$Params, context?: HttpContext): Observable<SessionValidResponse> {
-    return this.sessionValid$Response(params, context).pipe(
-      map((r: StrictHttpResponse<SessionValidResponse>): SessionValidResponse => r.body)
-    );
   }
 
   /** Path part for operation `register()` */

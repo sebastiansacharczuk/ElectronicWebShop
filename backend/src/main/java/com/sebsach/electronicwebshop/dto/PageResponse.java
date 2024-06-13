@@ -1,4 +1,4 @@
-package com.sebsach.electronicwebshop;
+package com.sebsach.electronicwebshop.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

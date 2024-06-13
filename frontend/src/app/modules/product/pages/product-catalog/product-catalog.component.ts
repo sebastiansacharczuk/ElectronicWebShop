@@ -3,8 +3,8 @@ import {ProductControllerService} from "../../../../services/services/product-co
 import {Router} from "@angular/router";
 import {PageResponseProductResponse} from "../../../../services/models/page-response-product-response";
 import {NgForOf} from "@angular/common";
-import { ProductResponse } from '../../../../services/models';
 import {ProductCardComponent} from "../../component/product-card/product-card.component";
+import {CartControllerService} from "../../../../services/services/cart-controller.service";
 
 @Component({
   selector: 'app-product-catalog',
@@ -23,6 +23,7 @@ export class ProductCatalogComponent implements OnInit {
   pages: any = []
   constructor(
     private productService: ProductControllerService,
+    private cartService: CartControllerService,
     private router: Router
   ) {
   }
@@ -73,6 +74,16 @@ export class ProductCatalogComponent implements OnInit {
       },
       error: err => console.log(err)
     })
+  }
+
+  protected addToCart(productId: number) {
+    this.cartService.addToCart({
+      productId: productId,
+      quantity: 1
+    }).subscribe({
+      next: () => console.log('Product added to cart'),
+      error: err => console.log(err)
+    });
   }
 }
 

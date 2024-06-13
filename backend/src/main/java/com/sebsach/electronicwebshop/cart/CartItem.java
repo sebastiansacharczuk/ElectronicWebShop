@@ -1,4 +1,4 @@
-package com.sebsach.electronicwebshop.dto;
+package com.sebsach.electronicwebshop.cart;
 
 import com.sebsach.electronicwebshop.product.Product;
 import jakarta.persistence.*;
@@ -14,11 +14,11 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Product product;
 
     private int quantity;

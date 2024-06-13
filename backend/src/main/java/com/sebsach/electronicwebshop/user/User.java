@@ -1,7 +1,6 @@
-package com.sebsach.electronicwebshop.dto;
+package com.sebsach.electronicwebshop.user;
 
-import com.sebsach.electronicwebshop.dto.Role;
-import com.sebsach.electronicwebshop.dto.Cart;
+import com.sebsach.electronicwebshop.cart.Cart;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -55,7 +54,7 @@ public class User implements UserDetails{
                 .collect(Collectors.toList());
     }
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 }

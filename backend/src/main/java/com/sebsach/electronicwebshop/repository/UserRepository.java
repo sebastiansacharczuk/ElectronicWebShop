@@ -1,6 +1,6 @@
 package com.sebsach.electronicwebshop.repository;
 
-import com.sebsach.electronicwebshop.dto.User;
+import com.sebsach.electronicwebshop.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

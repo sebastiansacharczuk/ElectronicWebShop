@@ -12,7 +12,15 @@ export const routes: Routes = [
       component: RegisterComponent
     },
     {
+      path: '',
+      loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)
+    },
+    {
       path: 'product',
       loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)
+    },
+    {
+      path: 'client',
+      loadChildren: () => import('./modules/client/client.module').then(m => m.ClientModule)
     }
 ];

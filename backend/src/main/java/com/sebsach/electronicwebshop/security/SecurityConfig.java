@@ -50,7 +50,7 @@ public class SecurityConfig {
                                     "product/**"
                             )
                             .permitAll()
-                            .requestMatchers("/user/**").hasAuthority("USER")
+                            .requestMatchers("/client/**", "cart/**").hasAuthority("USER")
                             .requestMatchers("/admin/**").hasAuthority("ADMIN")
                             .anyRequest().authenticated()
             )

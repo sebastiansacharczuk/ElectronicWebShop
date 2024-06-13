@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { ProductControllerService } from './services/product-controller.service';
+import { CartControllerService } from './services/cart-controller.service';
 import { AuthenticationControllerService } from './services/authentication-controller.service';
 
 /**
@@ -16,6 +17,7 @@ import { AuthenticationControllerService } from './services/authentication-contr
   declarations: [],
   providers: [
     ProductControllerService,
+    CartControllerService,
     AuthenticationControllerService,
     ApiConfiguration
   ],

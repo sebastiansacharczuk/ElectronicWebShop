@@ -1,5 +1,6 @@
-package com.sebsach.electronicwebshop.dto;
+package com.sebsach.electronicwebshop.cart;
 
+import com.sebsach.electronicwebshop.user.User;
 import com.sebsach.electronicwebshop.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -31,6 +32,22 @@ public class Cart {
         if (existingItem.isPresent()) {
             CartItem item = existingItem.get();
             item.setQuantity(item.getQuantity() + quantity);
+        } else {
+            CartItem newItem = new CartItem();
+            newItem.setProduct(product);
+            newItem.setQuantity(quantity);
+            newItem.setCart(this);
+            cartItems.add(newItem);
+        }
+    }
+
+    public void updateItem(Product product, int quantity) {
+        Optional<CartItem> existingItem = cartItems.stream()
+                .filter(item -> item.getProduct().equals(product))
+                .findFirst();
+        if (existingItem.isPresent()) {
+            CartItem item = existingItem.get();
+            item.setQuantity(quantity);
         } else {
             CartItem newItem = new CartItem();
             newItem.setProduct(product);

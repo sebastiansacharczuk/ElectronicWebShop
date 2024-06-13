@@ -92,8 +92,4 @@ public class GlobalExceptionHandler {
                 );
     }
 
-    @ExceptionHandler(ExpiredJwtException.class)
-    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("JWT token expired");
-    }
 }

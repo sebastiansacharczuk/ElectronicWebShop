@@ -1,0 +1,12 @@
+<div class="container my-5">
+    <h2 class="mb-4">Your Shopping Cart</h2>
+    <div *ngIf="cart.length === 0" class="alert alert-info">
+      Your cart is empty.
+    </div>
+    <div class="row">
+      <div *ngFor="let product of cart" class="col-md-6 col-lg-4">
+        <app-cart-item-card [product]="product"></app-cart-item-card>
+      </div>
+    </div>
+  </div>
+  

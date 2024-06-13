@@ -30,4 +30,4 @@ export function getAllProducts(http: HttpClient, rootUrl: string, params?: GetAl
   );
 }
 
-getAllProducts.PATH = '/product';
+getAllProducts.PATH = '/product/all';

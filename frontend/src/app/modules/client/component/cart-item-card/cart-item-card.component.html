@@ -1,0 +1,18 @@
+<div class="card mb-4">
+  <img *ngIf="product.image" [src]="product.image" class="card-img-top" alt="{{ product.name }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+    <p class="card-text">
+      <strong>Producer:</strong> {{ product.producer }}
+    </p>
+    <p class="card-text">
+      <strong>Price:</strong> ${{ product.price }}
+    </p>
+    <p class="card-text">
+      <strong>Quantity:</strong> {{ product.quantity }}
+    </p>
+    <button class="btn btn-primary">Update Quantity</button>
+    <button class="btn btn-danger ml-2">Remove</button>
+  </div>
+</div>
