@@ -15,18 +15,18 @@ import {Observable, of} from "rxjs";
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
-export class MenuComponent implements OnInit{
-  isLoggedIn$: Observable<boolean> = of(false); // Initialize with a default value
+export class MenuComponent {
+  isLoggedIn: boolean = false
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   logout() {
     this.authService.clearToken();
-    this.isLoggedIn$ = of(false); // Assign an Observable
+    this.isLoggedIn = false;
     location.reload();
   }
 }
